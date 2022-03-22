@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-5-(_#&rv1%ylc421n96^wco1(w61yz93l##yb#sr-1a(9w_u!9
 DEBUG = True
 
 ALLOWED_HOSTS = ['127.0.0.1', '130.105.135.127', '52.182.136.38',
-                '17-vorbestellan.azurewebsites.net',
+                '17-vorbestellen.azurewebsites.net',
                 'https://17-vorbestellen.azurewebsites.net',]
 
 
