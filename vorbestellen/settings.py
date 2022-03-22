@@ -95,7 +95,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'vsdb',
         'USER': 'vorbestellan_admin@vorbestellan-database',
-        'PASSWORD': '@VSx3b4cqeh#',
+        'PASSWORD': os.getenv("DB_PASSWORD"),
         'HOST': 'vorbestellan-database.postgres.database.azure.com',
         'PORT': '5432',
         'OPTION' : {'sslmode': 'require'},
