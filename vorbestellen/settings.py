@@ -27,7 +27,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['127.0.0.1', '130.105.135.127', '52.182.136.38',
                 '17-vorbestellan.azurewebsites.net',
-                'https://17-vorbestellen.azurewebsites.net']
+                'https://17-vorbestellen.azurewebsites.net',]
 
 
 # Application definition
