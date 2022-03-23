@@ -41,6 +41,18 @@ def removefilterdate(request):
         return redirect('vorbestellenapp:vacantrooms_view')
     return redirect('vorbestellenapp:vacantrooms_view')
 
+def listToString(s): 
+    
+    # initialize an empty string
+    str1 = "" 
+    
+    # traverse in the string  
+    for ele in s: 
+        str1 += ele  
+    
+    # return string  
+    return str1 
+
 class IndexView(View):
     def get(self, request): 
         if 'user' in request.session:
@@ -57,10 +69,12 @@ class IndexView(View):
     @method_decorator(csrf_protect)             
     def post(self, request):
         if request.method == 'POST':
-            username = request.POST.get('username')
-            password = request.POST.get('password')
-            check_password = pbkdf2_sha256.hash(password, rounds=20000, salt_size=16)
-            dec_password = pbkdf2_sha256.verify(password, check_password)
+            username = request.POST.get("username")
+            password = request.POST.get("password")
+            checking_pw = Users.objects.filter(username=username).values_list("password",flat=True)
+            listpw = list(checking_pw)
+
+            dec_password = pbkdf2_sha256.verify(password, listToString(listpw))
             check_user = Users.objects.filter(username=username)
             if check_user and dec_password:
                 request.session['user'] = username
@@ -88,10 +102,12 @@ class AboutView(View):
     @method_decorator(csrf_protect)     
     def post(self, request):
         if request.method == 'POST':
-            username = request.POST.get('username')
-            password = request.POST.get('password')
-            check_password = pbkdf2_sha256.hash(password, rounds=20000, salt_size=16)
-            dec_password = pbkdf2_sha256.verify(password, check_password)
+            username = request.POST.get("username")
+            password = request.POST.get("password")
+            checking_pw = Users.objects.filter(username=username).values_list("password",flat=True)
+            listpw = list(checking_pw)
+
+            dec_password = pbkdf2_sha256.verify(password, listToString(listpw))
             check_user = Users.objects.filter(username=username)
             if check_user and dec_password:
                 request.session['user'] = username
@@ -118,10 +134,12 @@ class ContactView(View):
     @method_decorator(csrf_protect) 
     def post(self, request):
         if request.method == 'POST':
-            username = request.POST.get('username')
-            password = request.POST.get('password')
-            check_password = pbkdf2_sha256.hash(password, rounds=20000, salt_size=16)
-            dec_password = pbkdf2_sha256.verify(password, check_password)
+            username = request.POST.get("username")
+            password = request.POST.get("password")
+            checking_pw = Users.objects.filter(username=username).values_list("password",flat=True)
+            listpw = list(checking_pw)
+
+            dec_password = pbkdf2_sha256.verify(password, listToString(listpw))
             check_user = Users.objects.filter(username=username)
             if check_user and dec_password:
                 request.session['user'] = username
@@ -162,10 +180,12 @@ class PriceView(View):
     def post(self, request):
         if request.method == 'POST':
             if 'btnLogin' in request.POST:
-                username = request.POST.get('username')
-                password = request.POST.get('password')
-                check_password = pbkdf2_sha256.hash(password, rounds=20000, salt_size=16)
-                dec_password = pbkdf2_sha256.verify(password, check_password)
+                username = request.POST.get("username")
+                password = request.POST.get("password")
+                checking_pw = Users.objects.filter(username=username).values_list("password",flat=True)
+                listpw = list(checking_pw)
+
+                dec_password = pbkdf2_sha256.verify(password, listToString(listpw))
                 check_user = Users.objects.filter(username=username)
                 if check_user and dec_password:
                     request.session['user'] = username
