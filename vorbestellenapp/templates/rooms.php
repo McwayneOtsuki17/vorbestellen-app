@@ -248,28 +248,28 @@ table, th, td {
                       <div class="form-group">
                       <!-- <label>Room Images</label> -->
                       <figure style="display: inline-block;">
-                        <img src="{% static 'img/rooms/alpha.jpg' %}" style="padding: 5px; width: 200px; border-radius: 3%; display: inline;" class="ui-widget-content"/><figcaption style="text-align: center;">Alpha</figcaption>
+                        <img src="{% static 'img/rooms/Alpha.jpg' %}" style="padding: 5px; width: 200px; border-radius: 3%; display: inline;" class="ui-widget-content"/><figcaption style="text-align: center;">Alpha</figcaption>
                       </figure>
                       <figure style="display: inline-block;">
-                        <img src="{% static 'img/rooms/alpha2.jpg' %}" style="padding: 5px; width: 200px; height: 152px; border-radius: 3%;" class="ui-widget-content"/><figcaption style="text-align: center;">oneAl</figcaption>
+                        <img src="{% static 'img/rooms/Alpha2.jpg' %}" style="padding: 5px; width: 200px; height: 152px; border-radius: 3%;" class="ui-widget-content"/><figcaption style="text-align: center;">oneAl</figcaption>
                       </figure>
                       <figure style="display: inline-block;">
-                        <img src="{% static 'img/rooms/bravo.jpg' %}" style="padding: 5px; width: 200px; height: 152px; border-radius: 3%;" class="ui-widget-content"/><figcaption style="text-align: center;">Bravo</figcaption>
+                        <img src="{% static 'img/rooms/Bravo.jpg' %}" style="padding: 5px; width: 200px; height: 152px; border-radius: 3%;" class="ui-widget-content"/><figcaption style="text-align: center;">Bravo</figcaption>
                       </figure>
                       <figure style="display: inline-block;">
-                        <img src="{% static 'img/rooms/bravo2.jpg' %}" style="padding: 5px; width: 200px; height: 152px; border-radius: 3%;" class="ui-widget-content"/><figcaption style="text-align: center;">oneBr</figcaption>
+                        <img src="{% static 'img/rooms/Bravo2.jpg' %}" style="padding: 5px; width: 200px; height: 152px; border-radius: 3%;" class="ui-widget-content"/><figcaption style="text-align: center;">oneBr</figcaption>
                       </figure>
                       <figure style="display: inline-block;">
-                        <img src="{% static 'img/rooms/charlie.jpg' %}" style="padding: 5px; width: 200px; height: 152px; border-radius: 3%;" class="ui-widget-content"/><figcaption style="text-align: center;">Charlie</figcaption>
+                        <img src="{% static 'img/rooms/Charlie.jpg' %}" style="padding: 5px; width: 200px; height: 152px; border-radius: 3%;" class="ui-widget-content"/><figcaption style="text-align: center;">Charlie</figcaption>
                       </figure>
                       <figure style="display: inline-block;">
-                        <img src="{% static 'img/rooms/charlie2.jpg' %}" style="padding: 5px; width: 200px; height: 152px; border-radius: 3%;" class="ui-widget-content"/><figcaption style="text-align: center;">oneCh</figcaption>
+                        <img src="{% static 'img/rooms/Charlie2.jpg' %}" style="padding: 5px; width: 200px; height: 152px; border-radius: 3%;" class="ui-widget-content"/><figcaption style="text-align: center;">oneCh</figcaption>
                       </figure>
                       <figure style="display: inline-block;">
-                        <img src="{% static 'img/rooms/delta.jpg' %}" style="padding: 5px; width: 200px; height: 152px; border-radius: 3%;" class="ui-widget-content"/><figcaption style="text-align: center;">Delta</figcaption>
+                        <img src="{% static 'img/rooms/Delta.jpg' %}" style="padding: 5px; width: 200px; height: 152px; border-radius: 3%;" class="ui-widget-content"/><figcaption style="text-align: center;">Delta</figcaption>
                       </figure>
                       <figure style="display: inline-block;">
-                        <img src="{% static 'img/rooms/delta2.jpg' %}" style="padding: 5px; width: 200px; height: 152px; border-radius: 3%;" class="ui-widget-content"/><figcaption style="text-align: center;">oneDe</figcaption>
+                        <img src="{% static 'img/rooms/Delta2.jpg' %}" style="padding: 5px; width: 200px; height: 152px; border-radius: 3%;" class="ui-widget-content"/><figcaption style="text-align: center;">oneDe</figcaption>
                       </figure>
                         <!-- remove hidden for debug, variable testing -->
                       <input type="text" id="updroom_image" name="updroom_image" class="form-control"
