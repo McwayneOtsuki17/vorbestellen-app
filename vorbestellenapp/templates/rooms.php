@@ -453,11 +453,11 @@ table, th, td {
                         <ul>
                           <li>
                             <input type="checkbox" onclick="AddAlphaOne()" name="imagecheck"value="Bravo"/>
-                            <label for="AlphaCheck"><img src="{% static 'img/rooms/alpha.jpg' %}" style="padding: 5px; width: 200px; border-radius: 10%;" class="ui-widget-content"/></label>
+                            <label for="AlphaCheck"><img src="{% static 'img/rooms/Alpha.jpg' %}" style="padding: 5px; width: 200px; border-radius: 10%;" class="ui-widget-content"/></label>
                           </li>
                           <li>
                             <input type="checkbox" onclick="AddAlphaTwo()" name="imagecheck"value="Bravo"/>
-                            <label for="BravoCheck"><img src="{% static 'img/rooms/alpha2.jpg' %}" style="padding: 5px; width: 200px; border-radius: 10%;" class="ui-widget-content"/></label>
+                            <label for="BravoCheck"><img src="{% static 'img/rooms/Alpha2.jpg' %}" style="padding: 5px; width: 200px; border-radius: 10%;" class="ui-widget-content"/></label>
                           </li>
                         </ul>
                         <!-- remove hidden for debug, variable testing -->
@@ -477,11 +477,11 @@ table, th, td {
                         <ul>
                           <li>
                             <input type="checkbox" onclick="AddBravoOne()" name="imagecheck"value="Bravo"/>
-                            <label for="AlphaCheck"><img src="{% static 'img/rooms/bravo.jpg' %}" style="padding: 5px; width: 200px; border-radius: 10%;" class="ui-widget-content"/></label>
+                            <label for="AlphaCheck"><img src="{% static 'img/rooms/Bravo.jpg' %}" style="padding: 5px; width: 200px; border-radius: 10%;" class="ui-widget-content"/></label>
                           </li>
                           <li>
                             <input type="checkbox" onclick="AddBravoTwo()" name="imagecheck"value="Bravo"/>
-                            <label for="BravoCheck"><img src="{% static 'img/rooms/bravo2.jpg' %}" style="padding: 5px; width: 200px; border-radius: 10%;" class="ui-widget-content"/></label>
+                            <label for="BravoCheck"><img src="{% static 'img/rooms/Bravo2.jpg' %}" style="padding: 5px; width: 200px; border-radius: 10%;" class="ui-widget-content"/></label>
                           </li>
                         </ul>
                       <input type="text" id="addroom_imageB" name="addroom_imageB" class="form-control"
@@ -497,11 +497,11 @@ table, th, td {
                         <ul>
                           <li>
                             <input type="checkbox" onclick="AddCharlieOne()" name="imagecheck"value="Bravo"/>
-                            <label for="AlphaCheck"><img src="{% static 'img/rooms/charlie.jpg' %}" style="padding: 5px; width: 200px; border-radius: 10%;" class="ui-widget-content"/></label>
+                            <label for="AlphaCheck"><img src="{% static 'img/rooms/Charlie.jpg' %}" style="padding: 5px; width: 200px; border-radius: 10%;" class="ui-widget-content"/></label>
                           </li>
                           <li>
                             <input type="checkbox" onclick="AddCharlieTwo()" name="imagecheck"value="Bravo"/>
-                            <label for="BravoCheck"><img src="{% static 'img/rooms/charlie2.jpg' %}" style="padding: 5px; width: 200px; border-radius: 10%;" class="ui-widget-content"/></label>
+                            <label for="BravoCheck"><img src="{% static 'img/rooms/Charlie2.jpg' %}" style="padding: 5px; width: 200px; border-radius: 10%;" class="ui-widget-content"/></label>
                           </li>
                         </ul>
                       <input type="text" id="addroom_imageC" name="addroom_imageC" class="form-control"
@@ -517,11 +517,11 @@ table, th, td {
                         <ul>
                           <li>
                             <input type="checkbox" onclick="AddDeltaOne()" name="imagecheck"value="Bravo"/>
-                            <label for="AlphaCheck"><img src="{% static 'img/rooms/delta.jpg' %}" style="padding: 5px; width: 200px; border-radius: 10%;" class="ui-widget-content"/></label>
+                            <label for="AlphaCheck"><img src="{% static 'img/rooms/Delta.jpg' %}" style="padding: 5px; width: 200px; border-radius: 10%;" class="ui-widget-content"/></label>
                           </li>
                           <li>
                             <input type="checkbox" onclick="AddDeltaTwo()" name="imagecheck"value="Bravo"/>
-                            <label for="BravoCheck"><img src="{% static 'img/rooms/delta2.jpg' %}" style="padding: 5px; width: 200px; border-radius: 10%;" class="ui-widget-content"/></label>
+                            <label for="BravoCheck"><img src="{% static 'img/rooms/Delta2.jpg' %}" style="padding: 5px; width: 200px; border-radius: 10%;" class="ui-widget-content"/></label>
                           </li>
                         </ul>
                       <input type="text" id="addroom_imageD" name="addroom_imageD" class="form-control"
