@@ -118,7 +118,7 @@ table, th, td {
           </li>
 
           <!-- If admin kay lahi ang dropdown sa service -->
-          {% ifequal current_user 'admin' %}
+          {% if current_user == 'admin' %}
           <li class="dropdown"><a href="#"><span>Manage</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
               <li><a href="{% url 'vorbestellenapp:rooms_view' %}">Manage Rooms</a></li>
@@ -127,16 +127,16 @@ table, th, td {
           </li>
         </ul>
         </li>
-        {% endifequal %}
+        {% endif %}
         <!-- end -->
 
         {% if current_user %}
         <li class="dropdown"><a href="#"><span>{{current_user}}</span> <i class="bi bi-chevron-down"></i></a>
           <ul>
-            {% ifnotequal current_user 'admin' %}
+            {% if current_user != 'admin' %}
             <li><a href="{% url 'vorbestellenapp:myreservations_view' %}">My Reservations</a></li>
             <li><a href="{% url 'vorbestellenapp:account_view' %}">Account Settings</a></li>
-            {% endifnotequal %}
+            {% endif %}
             <li><a href="{% url 'vorbestellenapp:logout' %}">Logout</a></li>
           </ul>
 
