@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Vorbestellen | Dashboard</title>
+  <title>Vorbestellen | Home</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -28,12 +28,6 @@
   <link href="{% static 'vendor/glightbox/css/glightbox.min.css' %}" rel="stylesheet">
   <link href="{% static 'vendor/remixicon/remixicon.css' %}" rel="stylesheet">
   <link href="{% static 'vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">
-
-  <!-- flatpickr lib -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
-
-  <!-- flatpickr script -->
-  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 
   <!-- Template Main CSS File -->
   <link href="{% static 'css/style.css' %}" rel="stylesheet">
@@ -58,84 +52,36 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <style>
-.cards-list {
-  z-index: 0;
-  width: 100%;
-  display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
+#hidden_alpha {
+    display: none;
+}
+#hidden_bravo {
+    display: none;
+}
+#hidden_charlie {
+    display: none;
+}
+#hidden_delta {
+    display: none;
 }
 
-.card {
-  margin: 20px auto;
-  width: 250px;
-  height: 250px;
-  border-radius: 40px;
-  box-shadow: 5px 5px 30px 7px rgba(0,0,0,0.25), -5px -5px 30px 7px rgba(0,0,0,0.22);
-  cursor: pointer;
-  transition: 0.4s;
+#updhidden_alpha {
+    display: none;
+}
+#updhidden_bravo {
+    display: none;
+}
+#updhidden_charlie {
+    display: none;
+}
+#updhidden_delta {
+    display: none;
 }
 
-.card .card_image {
-  width: inherit;
-  height: inherit;
-  border-radius: 40px;
+table, th, td {
+  border: 1px solid black;
+  border-radius: 10px;
 }
-
-.card .card_image img {
-  width: inherit;
-  height: inherit;
-  border-radius: 40px;
-  object-fit: cover;
-}
-
-.card .card_title {
-  text-align: center;
-  border-radius: 0px 0px 40px 40px;
-  font-family: sans-serif;
-  font-weight: bold;
-  font-size: 30px;
-  margin-top: -80px;
-  height: 40px;
-}
-
-.card:hover {
-  transform: scale(1.1);
-  box-shadow: 5px 5px 30px 15px rgba(0,0,0,0.25), 
-    -5px -5px 30px 15px rgba(0,0,0,0.22);
-}
-
-.title-white {
-  color: white;
-}
-
-.title-black {
-  color: black;
-}
-
-@media all and (max-width: 500px) {
-  .card-list {
-    /* On small screens, we are no longer using row direction but column */
-    flex-direction: column;
-  }
-}
-
-
-/*
-.card {
-  margin: 30px auto;
-  width: 300px;
-  height: 300px;
-  border-radius: 40px;
-  background-image: url('https://i.redd.it/b3esnz5ra34y.jpg');
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-repeat: no-repeat;
-box-shadow: 5px 5px 30px 7px rgba(0,0,0,0.25), -5px -5px 30px 7px rgba(0,0,0,0.22);
-  transition: 0.4s;
-}
-*/
 </style>
 <body>
 
@@ -164,7 +110,7 @@ box-shadow: 5px 5px 30px 7px rgba(0,0,0,0.25), -5px -5px 30px 7px rgba(0,0,0,0.2
           <!-- Services Nav -->
           <li class="dropdown"><a href="#"><span>Services</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
-              <li><a href="{% url 'vorbestellenapp:vacantrooms_view' %}">Dashboard</a></li>
+              <li><a href="#">Quick Booking</a></li>
               <li class="dropdown"><a href="{% url 'vorbestellenapp:pricing_view' %}" class="#"><span>Prices &
                     Rooms</span></a>
               </li>
@@ -172,25 +118,25 @@ box-shadow: 5px 5px 30px 7px rgba(0,0,0,0.25), -5px -5px 30px 7px rgba(0,0,0,0.2
           </li>
 
           <!-- If admin kay lahi ang dropdown sa service -->
-          {% if current_user == 'admin' %}
-            <li class="dropdown"><a href="#"><span>Manage</span> <i class="bi bi-chevron-down"></i></a>
-              <ul>
-                <li><a href="{% url 'vorbestellenapp:rooms_view' %}">Manage Rooms</a></li>
-                <li><a href="{% url 'vorbestellenapp:managebookings_view' %}">Manage Bookings</a></li>
-                <li><a href="{% url 'vorbestellenapp:manageusers_view' %}">Manage User</a></li>     
-                </li>
-              </ul>
-            </li>
-          {% endif %}
-          <!-- end -->
+          {% ifequal current_user 'admin' %}
+          <li class="dropdown"><a href="#"><span>Manage</span> <i class="bi bi-chevron-down"></i></a>
+            <ul>
+              <li><a href="{% url 'vorbestellenapp:rooms_view' %}">Manage Rooms</a></li>
+              <li><a href="{% url 'vorbestellenapp:managebookings_view' %}">Manage Bookings</a></li>
+              <li><a href="{% url 'vorbestellenapp:manageusers_view' %}">Manage User</a></li>
+          </li>
+        </ul>
+        </li>
+        {% endifequal %}
+        <!-- end -->
 
         {% if current_user %}
         <li class="dropdown"><a href="#"><span>{{current_user}}</span> <i class="bi bi-chevron-down"></i></a>
-        <ul>
-          {% if current_user != 'admin' %}
+          <ul>
+            {% ifnotequal current_user 'admin' %}
             <li><a href="{% url 'vorbestellenapp:myreservations_view' %}">My Reservations</a></li>
             <li><a href="{% url 'vorbestellenapp:account_view' %}">Account Settings</a></li>
-          {% endif %}
+            {% endifnotequal %}
             <li><a href="{% url 'vorbestellenapp:logout' %}">Logout</a></li>
           </ul>
 
@@ -212,216 +158,213 @@ box-shadow: 5px 5px 30px 7px rgba(0,0,0,0.25), -5px -5px 30px 7px rgba(0,0,0,0.2
     <!-- Data Table End -->
 
 
-    <!-- Vacant Rooms -->
+    <!-- Pending Table -->
     <div class="container">
       <div class="table-wrapper">
         <div class="table-title">
           <div class="row">
             <div class="col-sm-6">
-              <h2>Vacant <b>Rooms</b></h2>
-            </div>
-              <div class="col-sm-6">
-              <a href="#filterModal" class="btn btn-secondary" data-toggle="modal"><i
-                  class="material-icons">&#xE147;</i> <span class="light">Filter</span></a>
-              <a href="{% url 'vorbestellenapp:removefilter' %}" class="btn btn-danger"><i
-                  class="material-icons">&#xE15C;</i> <span>Remove Filter</span></a>
-              </div>         
+              <h2>Pending <b>Reservations</b></h2>
+            </div>         
           </div>
         </div>
-
-        <!-- Cards -->
-        {% if filtertrigger %}
-        <div class="cards-list">
-
-        {% for vacants in vacants %}
-          <div class="card 1">
-            <div class="card_image"> <img src="{{vacants.image.url}}" /> </div>
-              <div class="card_title title-white">
-              <p>{{vacants.room_name}}</p>
-            </div>
-          </div>
-        {% endfor %}
-        </div>
-
-        <!-- end of card -->
-
-        {% else %}
-        <!-- Cards -->
-        <div class="cards-list">
-
-        {% for rooms in rooms %}
-          <div class="card 1">
-            <div class="card_image"> <img src="{{rooms.image.url}}" /> </div>
-              <div class="card_title title-white">
-              <p>{{rooms.room_name}}</p>
-            </div>
-          </div>
-        {% endfor %}
-        </div>
-
-        {% endif %}
-
-        <!-- end of card -->
-
-    <!-- Filter Modal -->
-    <div id="filterModal" class="modal fade">
-      <form id="filterForm" method="POST">
-        {% csrf_token %}
-        <div class="modal-dialog modal-dialog-centered">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h4 class="modal-title"><span class="highlight">Filter</span> Rooms</h4>
-            </div>
-            <div class="modal-body">
-              <!-- Date and Time slot selection -->
-              <div class="col-8" style="padding: 10px; display: inline-block; width: 315px;">
-                <label>Time</label>
-                <select id="room_time" name="room_time" class="custom-select form-control">
-                  <!-- options value from database, mag create pa lain table for room fees(?) -->
-                  <option value="0" disabled selected hidden>Select Timeslot</option>
-                  <option value="Morning">Morning</option>
-                  <option value="Afternoon">Afternoon</option>
-                  <option value="Evening">Evening</option>
-                </select>
-              </div>
-              <div class="col-8" style="padding: 10px; display: inline-block; width: 315px;">
-                <label>Date</label>
-                <input placeholder="Select date" type="datetime-local" id="room_date" name="room_date"
-                  class="form-control">
-              </div>
-            <div class="form-group">
-              <input type="text" class="form-control rounded-left" id="filtertrigger" name="filtertrigger" value="Filter" readonly hidden>
-            </div>
-              <!-- end of date and time -->
-            </div>
-            <div class="modal-footer">
-              <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-              <input type="submit" id="btnFilter" name="btnFilter" class="btn btn-danger" value="Filter">
-            </div>
-      </form>
-    </div>
-    </div>
-    </div>
-        <!-- end of filter modal -->
-
-      <!-- Most Booked Room -->
-      <div class="container">
-      <div class="table-wrapper">
-        <div class="table-title">
-          <div class="row">
-            <div class="col-sm-6">
-              <h2>Most Booked <b>Room</b></h2>
-            </div>      
-          </div>
-        </div>
-
-        <!-- Most Booked Card -->
-        <div class="cards-list">
-
-        {% for maxbooked in maxbooked %}
-          <div class="card 1">
-            <div class="card_image"> <img src="{{maxbooked.image.url}}" /> </div>
-              <div class="card_title title-white">
-              <p>{{maxbooked.room_name}}</p>
-            </div>
-          </div>
-        {% endfor %}
-        </div>
-        <!-- end of card -->
-
-      </div>
-
-      <!-- end of most booked -->
-
-      <!-- Number of Bookings -->
-      <div class="container">
-      <div class="table-wrapper">
-        <div class="table-title">
-          <div class="row">
-            <div class="col-sm-6">
-              <h2>Number of <b>Bookings</b></h2>
-            </div>
-              <div class="col-sm-6">
-              <a href="#filterBookingsModal" class="btn btn-secondary" data-toggle="modal"><i
-                  class="material-icons">&#xE147;</i> <span class="light">Filter</span></a>
-              <a href="{% url 'vorbestellenapp:removefilterbook' %}" class="btn btn-danger"><i
-                  class="material-icons">&#xE15C;</i> <span>Remove Filter</span></a>     
-            </div>      
-          </div>
-        </div>
-
-      <!-- Data Table -->
+        <!-- Data Table -->
         <table class="table table-striped table-hover">
           <thead>
             <tr>
+              <th>
+                <span class="custom-checkbox">
+                  <input type="checkbox" id="selectAll">
+                  <label for="selectAll"></label>
+                </span>
+              </th>
+              <th>Reservation ID</th>
+              <th>Reserver</th>
+              <th>Time</th>
+              <th>Date</th>
               <th>Room Name</th>
-              <th>Number of Bookings</th>
+              <th>Contact No.</th>
+              <th>Actions</th>
             </tr>
           </thead>
           <tbody>
-            {% if filtertriggerbook %}
-            {% for listbookings in listbookings %}
+            {% for reser in reser %}
             <tr>
-              <td> {{listbookings.room_name_id}}</td>
-              <td>{{listbookings.count}}</td>     
-            </tr>
-             {% endfor %}
-            {% else %}
-            {% for book_list in book_list %}
-            <tr>
+              <td>
+                <span class="custom-checkbox">
+                  <input type="checkbox" id="checkbox1" name="options[]" value="1">
+                  <label for="checkbox1"></label>
+                </span>
+              </td>
               <!-- AutoIncremented -->
-              <td>{{book_list.room_name_id}}</td>
-              <td>{{book_list.count}}</td>
+              <td>{{reser.reservation_id}}</td>
+              <td>{{reser.reserver}}</td>
+              <td>{{reser.time}}</td>
+              <td>{{reser.date}}</td>
+              <td>{{reser.room_name_id}}</td>
+              <td>{{reser.contact}}</td>
+              <td>
+                <a href="#" class="delete" data-toggle="modal" data-target="#acceptReservationModal-{{reser.reservation_id}}">Cancel Reservation</a>
+              </td>
             </tr>
-            {% endfor %}
-            {% endif %}
           </tbody>
-        </table>
-      </div>
-
-    <!-- Filter Bookings Modal -->
-    <div id="filterBookingsModal" class="modal fade">
-      <form id="filterBookingsForm" method="POST">
+    <!-- Accept Modal HTML -->
+    <div id="acceptReservationModal-{{reser.reservation_id}}" class="modal fade">
+      <form id="acceptForm" method="POST">
         {% csrf_token %}
         <div class="modal-dialog modal-dialog-centered">
           <div class="modal-content">
             <div class="modal-header">
-              <h4 class="modal-title"><span class="highlight">Filter</span> Rooms</h4>
+              <h4 class="modal-title"><span class="highlight">Cancel</span> Reservation</h4>
             </div>
             <div class="modal-body">
-              <!-- Date and Time slot selection -->
-              <div class="col-8" style="padding: 10px; display: inline-block; width: 315px;">
-                <label>Date</label>
-                <input placeholder="Select date" type="datetime-local" id="room_date_book" name="room_date_book"
-                  class="form-control">
-              </div>
-            <div class="form-group">
-              <input type="text" class="form-control rounded-left" id="filtertriggerbook" name="filtertriggerbook" value="Filter" readonly>
-            </div>
-              <!-- end of date and time -->
+              <!-- add hidden value to find record for deletion -->
+              <input type="text" id="acceptroom" name="acceptroom" class="form-control"
+                placeholder="auto incremented" value="{{reser.reservation_id}}" readonly hidden required>
+              <p>Are you sure you want to cancel your reservation?</p>
             </div>
             <div class="modal-footer">
               <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-              <input type="submit" id="btnBookings" name="btnBookings" class="btn btn-danger" value="Filter">
+              <input type="submit" id="btnAcceptReservation" name="btnAcceptReservation" class="btn btn-danger" value="Confirm">
             </div>
       </form>
+        </div>
+    </div>
+    
     </div>
     </div>
-    </div>
-        <!-- end of filter modal -->
+    {% endfor %}
+    </table>
 
-      <!-- end of number of books -->
-      <!-- Initialize flatpickr -->
-      <script>
-        // format date
-        config = {
-          dateFormat: "Y-m-d H:i",
-          altInput: true,
-          altFormat: "l - F j, Y"
-        }
-        // call variable
-        flatpickr("input[type=datetime-local]", config);
-      </script>
+    <div class="clearfix">
+      <div class="hint-text">Showing <b>5</b> out of <b>25</b> entries</div>
+      <ul class="pagination">
+        <li class="page-item disabled"><a href="#">Previous</a></li>
+        <li class="page-item"><a href="#" class="page-link">1</a></li>
+        <li class="page-item"><a href="#" class="page-link">2</a></li>
+        <li class="page-item active"><a href="#" class="page-link">3</a></li>
+        <li class="page-item"><a href="#" class="page-link">4</a></li>
+        <li class="page-item"><a href="#" class="page-link">5</a></li>
+        <li class="page-item"><a href="#" class="page-link">Next</a></li>
+      </ul>
+    </div>
+    </div>
+    </div>
+    <!-- Pending Table End -->
+
+<!-- Verified Table -->
+    <div class="container">
+      <div class="table-wrapper">
+        <div class="table-title">
+          <div class="row">
+            <div class="col-sm-6">
+              <h2>Verified <b>Reservations</b></h2>
+            </div>         
+          </div>
+        </div>
+        <!-- Data Table -->
+        <h5> Once your reservations are verified, you can no longer cancel them. </h5>
+        <table class="table table-striped table-hover">
+          <thead>
+            <tr>
+              <th>
+                <span class="custom-checkbox">
+                  <input type="checkbox" id="selectAll">
+                  <label for="selectAll"></label>
+                </span>
+              </th>
+              <th>Reservation ID</th>
+              <th>Reserver</th>
+              <th>Time</th>
+              <th>Date</th>
+              <th>Room Name</th>
+              <th>Contact No.</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for vreser in vreser %}
+            <tr>
+              <td>
+                <span class="custom-checkbox">
+                  <input type="checkbox" id="checkbox1" name="options[]" value="1">
+                  <label for="checkbox1"></label>
+                </span>
+              </td>
+              <!-- AutoIncremented -->
+              <td>{{vreser.reservation_id}}</td>
+              <td>{{vreser.reserver}}</td>
+              <td>{{vreser.time}}</td>
+              <td>{{vreser.date}}</td>
+              <td>{{vreser.room_name_id}}</td>
+              <td>{{vreser.contact}}</td>
+            </tr>
+          </tbody>
+    <!-- Undo Modal HTML -->
+    <div id="changeReservationModal-{{vreser.reservation_id}}" class="modal fade">
+      <form id="acceptForm" method="POST">
+        {% csrf_token %}
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title"><span class="highlight">Undo</span> Verification</h4>
+            </div>
+            <div class="modal-body">
+              <!-- add hidden value to find record for deletion -->
+              <input type="text" id="pendingroom" name="pendingroom" class="form-control"
+                placeholder="auto incremented" value="{{vreser.reservation_id}}" readonly hidden required>
+              <p>Are you sure you want to undo verification?</p>
+            </div>
+            <div class="modal-footer">
+              <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
+              <input type="submit" id="btnChangeReservation" name="btnChangeReservation" class="btn btn-danger" value="Confirm">
+            </div>
+      </form>
+        </div>
+    
+
+    </div>
+    
+    </div>
+    </div>
+        <!-- Delete Reservation Modal HTML -->
+        <div id="deleteReservationModal-{{vreser.reservation_id}}" class="modal fade">
+          <form id="deleteForm" method="POST">
+            {% csrf_token %}
+            <div class="modal-dialog modal-dialog-centered">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title"><span class="highlight">Delete</span> Reservation</h4>
+                </div>
+                <div class="modal-body">
+                  <!-- add hidden value to find record for deletion -->
+                  <input type="text" id="tobedelroom" name="tobedelroom" class="form-control"
+                    placeholder="auto incremented" value="{{vreser.reservation_id}}" readonly hidden required>
+                  <p>Are you sure you want to delete reservation?</p>
+                </div>
+                <div class="modal-footer">
+                  <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
+                  <input type="submit" id="btndeleteReservation" name="btndeleteReservation" class="btn btn-danger" value="Confirm">
+                </div>
+          </form>
+            </div>
+    {% endfor %}
+    </table>
+
+    <div class="clearfix">
+      <div class="hint-text">Showing <b>5</b> out of <b>25</b> entries</div>
+      <ul class="pagination">
+        <li class="page-item disabled"><a href="#">Previous</a></li>
+        <li class="page-item"><a href="#" class="page-link">1</a></li>
+        <li class="page-item"><a href="#" class="page-link">2</a></li>
+        <li class="page-item active"><a href="#" class="page-link">3</a></li>
+        <li class="page-item"><a href="#" class="page-link">4</a></li>
+        <li class="page-item"><a href="#" class="page-link">5</a></li>
+        <li class="page-item"><a href="#" class="page-link">Next</a></li>
+      </ul>
+    </div>
+    </div>
+    </div>
+    <!-- Pending Table End -->
   
   </main><!-- End #main -->
 

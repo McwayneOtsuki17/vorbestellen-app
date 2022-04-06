@@ -22,4 +22,5 @@ urlpatterns = [
     path('managebookings/', views.MngBkngsView.as_view(), name="managebookings_view"),
     path('manageusers/', views.MngUsersView.as_view(), name="manageusers_view"),
     path('vacantrooms/', views.VacantRoomsView.as_view(), name="vacantrooms_view"),
+    path('myreservations/', views.MyRsrvView.as_view(), name="myreservations_view"),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

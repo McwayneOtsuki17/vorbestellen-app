@@ -657,3 +657,46 @@ class VacantRoomsView(View):
                 request.session['filterbookdate'] = room_date
                 return redirect('vorbestellenapp:vacantrooms_view')
             return redirect('vorbestellenapp:vacantrooms_view')   
+
+class MyRsrvView(View):
+    def get(self, request):
+        if 'user' in request.session:
+            current_user = request.session['user']
+            users = Users.objects.filter(username="admin")
+            reser = Reservations.objects.filter(reserver_id_id=current_user, status="Pending")
+            vreser = Reservations.objects.filter(reserver_id_id=current_user, status="Verified")
+            context = {
+                'current_user': current_user,
+                'users' : users,
+                'reser' : reser,
+                'vreser' : vreser,
+            }
+            return render(request, 'myreservations.php', context)
+        else:
+            return HttpResponse('Please login first to view this page.') 
+
+    def post(self, request):
+        if request.method == 'POST':
+            form = RoomsForm(request.POST, request.FILES) 
+            if 'btnAcceptReservation' in request.POST:
+                form = ReservationsForm(request.POST, request.FILES) 
+                acceptroom = request.POST.get("acceptroom")
+                a = Reservations.objects.get(reservation_id=acceptroom)
+                a.status = "Cancelled"
+                a.save()
+                return redirect('vorbestellenapp:myreservations_view')
+
+            elif 'btnChangeReservation' in request.POST:
+                form = ReservationsForm(request.POST, request.FILES) 
+                pendingroom = request.POST.get("pendingroom")
+                p = Reservations.objects.get(reservation_id=pendingroom)
+                p.status = "Pending"
+                p.save()
+                return redirect('vorbestellenapp:myreservations_view')
+
+            #delete from Verification table
+            elif 'btndeleteReservation' in request.POST:
+                form = ReservationsForm(request.POST, request.FILES) 
+                vreser_code = request.POST.get('tobedelroom')
+                Reservations.objects.get(reservation_id=vreser_code).delete()
+                return redirect('vorbestellenapp:myreservations_view')

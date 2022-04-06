@@ -84,7 +84,7 @@
         <li class="dropdown"><a href="#"><span>{{current_user}}</span> <i class="bi bi-chevron-down"></i></a>
         <ul>
           {% if current_user != 'admin' %}
-            <li><a href="#">My Reservations</a></li>
+            <li><a href="{% url 'vorbestellenapp:myreservations_view' %}">My Reservations</a></li>
             <li><a href="{% url 'vorbestellenapp:account_view' %}">Account Settings</a></li>
           {% endif %}
 			  <li><a href="{% url 'vorbestellenapp:logout' %}">Logout</a></li>
